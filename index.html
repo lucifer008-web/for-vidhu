@@ -196,7 +196,23 @@ button:hover {
 
     flex-direction: column;
     padding: 20px;
+    animation: cinematicFade 1.5s ease;
+text-align: center;
+overflow: hidden;
 }
+@keyframes cinematicFade {
+    from {
+        opacity: 0;
+        transform: scale(1.15);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
 
 #finalLove h1 {
     font-size: 45px;
@@ -259,16 +275,63 @@ button:hover {
         padding: 10px 18px;
     }
 }
+#musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(255, 80, 130, 0.4);
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 999;
+    animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 999;
+    animation: floatUp 6s linear forwards;
+}
 
 </style>
 </head>
-
 
 <body>
 
     <audio id="bgMusic" loop>
     <source src="love.mp3" type="audio/mpeg">
 </audio>
+<button id="musicBtn" onclick="toggleMusic()">🎵</button>
 
 <!-- OPENING SCREEN -->
 
@@ -413,7 +476,7 @@ button:hover {
         the happiest person! 🥹💕
         <br><br>
 
-        I Love You So Much ❤️
+        <p id="typewriter"></p>
         <br>
 
         Forever & Always ♾️
@@ -441,6 +504,19 @@ function openHeart() {
     heartExplosion();
 
     window.scrollTo(0,0);
+}
+
+function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    if (music.paused) {
+        music.play();
+        btn.innerHTML = "⏸️";
+    } else {
+        music.pause();
+        btn.innerHTML = "🎵";
+    }
 }
 
 
@@ -484,15 +560,42 @@ setInterval(createHeart, 500);
 /* HEART EXPLOSION */
 
 function heartExplosion() {
+    for (let i = 0; i < 50; i++) {
+        const heart = document.createElement("div");
 
-    for(let i = 0; i < 40; i++) {
+        heart.innerHTML = ["❤️", "💕", "💖", "💗"]
+            [Math.floor(Math.random() * 4)];
 
-        setTimeout(function() {
-            createHeart();
-        }, i * 50);
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        heart.style.zIndex = "99999";
+        heart.style.pointerEvents = "none";
 
+        document.body.appendChild(heart);
+
+        const x = (Math.random() - 0.5) * 800;
+        const y = (Math.random() - 0.5) * 800;
+
+        heart.animate([
+            {
+                transform: "translate(-50%, -50%) scale(0)",
+                opacity: 1
+            },
+            {
+                transform: `translate(${x}px, ${y}px) scale(1.5)`,
+                opacity: 0
+            }
+        ], {
+            duration: 1500,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => heart.remove(), 1600);
     }
 }
+
 
 
 /* YES BUTTON */
@@ -501,12 +604,28 @@ function yesClicked() {
 
     heartExplosion();
 
-    setTimeout(function() {
+    document.getElementById("answer").innerHTML =
+    "You just made me the happiest person ❤️<br><br>I Love You Vidhu 💗✨";
 
-        document.getElementById("finalLove")
-        .style.display = "flex";
+  setTimeout(function() {
+    document.getElementById("finalLove").style.display = "flex";
 
-    }, 500);
+    const text = "And if I had to choose again... I'd still choose you. ❤️ I Love You Vidhu 💗";
+    const typewriter = document.getElementById("typewriter");
+
+    typewriter.innerHTML = "";
+    let i = 0;
+
+    function typeText() {
+        if (i < text.length) {
+            typewriter.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeText, 55);
+        }
+    }
+
+    typeText();
+}, 500);
 }
 
 
@@ -541,6 +660,9 @@ function closeFinal() {
 
     heartExplosion();
 }
+
+
+
 
 </script>
 
