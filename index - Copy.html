@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Vidhu ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* FIRST SCREEN */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px 25px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: appear 1.3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big-heart {
+    font-size: 75px;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+button {
+    border: none;
+    padding: 14px 28px;
+    margin: 20px 5px 0;
+    border-radius: 30px;
+    background: white;
+    color: #ff477e;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* LOVE SECTION */
+
+#lovePage {
+    display: none;
+    padding: 40px 20px 80px;
+}
+
+.love-box {
+    max-width: 600px;
+    margin: auto;
+    padding: 35px 25px;
+    background: rgba(255,255,255,.18);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 35px rgba(0,0,0,.2);
+}
+
+.love-box h2 {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.letter {
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* PHOTO */
+
+.photo-box {
+    margin: 35px auto;
+}
+
+.photo-box img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* QUESTION */
+
+.question {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255,255,255,.15);
+    border-radius: 25px;
+}
+
+.question h2 {
+    font-size: 28px;
+}
+
+#answer {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* HEARTS */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 1000;
+    animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* FINAL SCREEN */
+
+#finalLove {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    background: linear-gradient(135deg,#ff416c,#ff4b8b);
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    padding: 20px;
+}
+
+#finalLove h1 {
+    font-size: 45px;
+}
+
+#finalLove .final-heart {
+    font-size: 100px;
+    animation: heartbeat .8s infinite;
+}
+
+.vidhu-photo {
+    width: 220px;
+    height: 220px;
+    max-width: 80vw;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+@media (max-width: 600px) {
+    .vidhu-photo {
+        width: 170px;
+        height: 170px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .card {
+        width: 92%;
+        max-width: 92%;
+        padding: 22px 15px;
+        margin: auto;
+        box-sizing: border-box;
+    }
+
+    .vidhu-photo {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+    <audio id="bgMusic" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- OPENING SCREEN -->
+
+<section class="hero" id="start">
+
+    <div class="card">
+
+        <img src="vidhu.jpg" alt="Vidhu" class="vidhu-photo">
+
+        <div class="big-heart">❤️</div>
+
+        <h1>Hey Vidhu ❤️</h1>
+
+        <p class="subtitle">
+            I made a little corner of the internet
+            just for you... 🥹💕
+            <br><br>
+            Because someone as special as you
+            deserves something special.
+        </p>
+
+        <button onclick="openHeart()">
+            💌 Open My Heart
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- LOVE PAGE -->
+
+<section id="lovePage">
+
+<div class="love-box">
+
+    <h2>For My Vidhu ❤️</h2>
+
+    <div class="letter">
+
+        Dear Vidhu 💕
+        <br><br>
+
+        Sometimes words aren't enough
+        to explain how special someone is.
+        <br><br>
+
+        But I want you to know that
+        talking to you makes my day better. 🥹
+        <br><br>
+
+        Your smile makes me smile.
+        Your happiness matters to me.
+        And every little moment with you
+        becomes a beautiful memory. ❤️
+        <br><br>
+
+        Out of millions of people in this world,
+        somehow I found you...
+        <br><br>
+
+        And I'm really glad I did. 💗
+
+    </div>
+
+
+    <!-- PHOTO AREA -->
+
+    <div class="photo-box">
+
+        <!--
+        PHOTO ADD KARNE KE LIYE:
+
+        1. Vidhu ki photo isi folder me rakho
+        2. Photo ka naam "vidhu.jpg" rakho
+        -->
+
+        <img src="vidhu.jpg"
+             alt="Vidhu ❤️"
+             onerror="this.style.display='none'">
+
+    </div>
+
+
+    <div class="letter">
+
+        I don't need a perfect story...
+        <br><br>
+
+        I just want beautiful moments,
+        stupid conversations,
+        endless laughs,
+        and lots of memories with you. 🫶
+        <br><br>
+
+        <strong>
+            I Love You Vidhu ❤️
+        </strong>
+
+    </div>
+
+
+    <!-- FINAL QUESTION -->
+
+    <div class="question">
+
+        <h2>
+            Will you stay with me forever? 🥹❤️
+        </h2>
+
+        <button onclick="yesClicked()">
+            YES ❤️
+        </button>
+
+        <button id="noButton"
+                onmouseover="moveNo()"
+                onclick="moveNo()">
+
+            NO 😜
+
+        </button>
+
+        <div id="answer"></div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FINAL SURPRISE -->
+
+<div id="finalLove">
+
+    <div class="final-heart">❤️</div>
+
+    <h1>I Knew It 😭❤️</h1>
+
+    <p style="font-size:22px; line-height:1.7;">
+        Vidhu, you just made me
+        the happiest person! 🥹💕
+        <br><br>
+
+        I Love You So Much ❤️
+        <br>
+
+        Forever & Always ♾️
+    </p>
+
+    <button onclick="closeFinal()">
+        One More Hug 🫂❤️
+    </button>
+
+</div>
+
+
+<script>
+
+/* OPEN WEBSITE */
+
+function openHeart() {
+   document.getElementById("bgMusic").play();
+
+
+    document.getElementById("start").style.display = "none";
+
+    document.getElementById("lovePage").style.display = "block";
+
+    heartExplosion();
+
+    window.scrollTo(0,0);
+}
+
+
+/* CREATE HEART */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const emojis = [
+        "❤️","💕","💗","💖","💘","🌹"
+    ];
+
+    heart.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (Math.random() * 25 + 20) + "px";
+
+    heart.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+        heart.remove();
+    }, 7000);
+}
+
+
+/* NORMAL FLOATING HEARTS */
+
+setInterval(createHeart, 500);
+
+
+/* HEART EXPLOSION */
+
+function heartExplosion() {
+
+    for(let i = 0; i < 40; i++) {
+
+        setTimeout(function() {
+            createHeart();
+        }, i * 50);
+
+    }
+}
+
+
+/* YES BUTTON */
+
+function yesClicked() {
+
+    heartExplosion();
+
+    setTimeout(function() {
+
+        document.getElementById("finalLove")
+        .style.display = "flex";
+
+    }, 500);
+}
+
+
+/* FUNNY NO BUTTON */
+
+function moveNo() {
+
+    const button =
+        document.getElementById("noButton");
+
+    const x =
+        Math.random() * 200 - 100;
+
+    const y =
+        Math.random() * 150 - 75;
+
+    button.style.transform =
+        "translate(" + x + "px," + y + "px)";
+}
+
+
+/* CLOSE FINAL */
+
+function closeFinal() {
+
+    document.getElementById("finalLove")
+    .style.display = "none";
+
+    document.getElementById("answer")
+    .innerHTML =
+    "Sending unlimited hugs to Vidhu 🫂❤️";
+
+    heartExplosion();
+}
+
+</script>
+
+</body>
+</html>
